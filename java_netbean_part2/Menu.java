@@ -33,7 +33,7 @@ public final class Menu {
 	
     public static int menuGeneral(User user){
         //display the general menu	
-        Class classe = user.getClass();
+        Class<? extends User> classe = user.getClass();
         int menuItem;
 
         System.out.println("Choisissez :");
@@ -85,7 +85,7 @@ public final class Menu {
             System.out.println("age mis à 0 par défaut !");
             input.nextLine();
         }
-        Class classe = user.getClass();
+        Class<? extends User> classe = user.getClass();
         System.out.println(classe.getSimpleName());
     }
 	

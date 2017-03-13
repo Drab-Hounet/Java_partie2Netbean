@@ -13,7 +13,7 @@ public class NavGeneral {
 
         User firstUser = Menu.menuSetModOrNot(); 
 
-        Class classe = firstUser.getClass();
+        Class<? extends User> classe = firstUser.getClass();
         firstUser.setProfil();
         //Menu.menuSetUser(firstUser);
 
