@@ -15,11 +15,9 @@ public final class Menu {
     public static User menuSetModOrNot(){
         String menuItem;
         System.out.println("Etes vous moderateur ? (Y/N)");
-        try {
-            menuItem = input.nextLine();
-        }catch(Exception e){
-            menuItem = "N";
-        }
+
+        menuItem = input.nextLine();
+
         if (menuItem.equals("Y")){
             Moderator mod = new Moderator();
             System.out.println("Création du modérateur");
@@ -58,9 +56,9 @@ public final class Menu {
         input.nextLine(); // to enable to save another user after the menu
         return menuItem;
     }
-
+        
     public static void menuSetUser(User user){
-		
+
         if(user.getName().isEmpty()){
             System.out.println("Renseigner votre nom : ");
         }else{
@@ -73,23 +71,21 @@ public final class Menu {
             System.out.println("Modifier votre prénom " + user.getFirst_name() + " ?");
         }
         user.setFirst_name(input.nextLine());
-        if(user.getAge() > 0){
-            System.out.println("Modifier votre age de " + user.getAge() + " ans ?");
+        if(user.getBirthYear() > 0){
+            System.out.println("Modifier votre année de naissance de " + user.getBirthYear() + " ans ?");
         }else{
-            System.out.println("Renseigner votre age : ");
+            System.out.println("Renseigner votre année de naissance : ");
         }
         try{
-            user.setAge(input.nextInt());	
+            user.setBirthYear(input.nextInt());	
         }catch(Exception e){
-            user.setAge(0);
-            System.out.println("age mis à 0 par défaut !");
+            user.setBirthYear(1983);
+            System.out.println("année par défaut mis à 1983 par défaut !");
             input.nextLine();
         }
-        Class<? extends User> classe = user.getClass();
-        System.out.println(classe.getSimpleName());
     }
 	
-    public static void menuSetProfile(Moderator moderator) {
+    public static void menuSetMod(Moderator moderator) {
         // TODO Auto-generated method stub
         
         //name
@@ -109,17 +105,17 @@ public final class Menu {
         moderator.setFirst_name(input.nextLine());
 		
         //age
-        if(moderator.getAge() > 0){
-            System.out.println("Modifier votre age de " + moderator.getAge() + " ans ?");
+        if(moderator.getBirthYear() > 0){
+            System.out.println("Modifier votre année de naissance de " + moderator.getBirthYear() + " ans ?");
         }else{
-            System.out.println("Renseigner votre age : ");
+            System.out.println("Renseigner votre année de naissance : ");
         }
 		
         try{
-            moderator.setAge(input.nextInt());	
+            moderator.setBirthYear(input.nextInt());	
         }catch(Exception e){
-            moderator.setAge(0);
-            System.out.println("age mis à 0 par défaut !");
+            moderator.setBirthYear(1983);
+            System.out.println("année par défaut mis à 1983 par défaut !");
             input.nextLine();
         }
 		
@@ -147,7 +143,7 @@ public final class Menu {
         choice = input.nextLine();
         for (User userOne : group.getListUsers()){
             if (choice.equals(userOne.getName())){
-                user.addFriends(userOne);
+                user.addPerson(userOne);
                 System.out.println("Utilisateur trouvé et enregistré!");
                 break;
             }

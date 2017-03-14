@@ -1,51 +1,24 @@
-
 package java_netbean_part2;
 
 import java.util.ArrayList;
 
-public class User {
+public class User extends Person implements Relationship{
 	
-    protected String name = new String();
-    protected String first_name = new String();
-    protected int age;
     private final int level_moderator = 0;
     protected ArrayList<Message> listMessage = new ArrayList<>(); 
-    protected ArrayList<User> listFriends = new ArrayList<>();
-
+    
     public User(){
     }
 
-    public User(String pName, String pFirst_name, int pAge){
+    public User(String pName, String pFirst_name, int pBirthYear){
         name = pName;
         first_name = pFirst_name;
-        age = pAge;
+        birthYear = pBirthYear;
     }
-    //-------------------------------------------FRIENDS-------------------------------------------
-
-    /**
-     * @return listFriends
-     */
-    public ArrayList<User> getListFriends() {
-        return listFriends;
+ 
+    public void connect(){
+        System.out.println(this.getName() + " est connecté");
     }
-
-    public void displayFriends(){
-        if(!this.listFriends.isEmpty()){
-            for(User friend : this.listFriends){
-                System.out.println(friend.displayProfil());
-            }
-        }else{
-            System.out.println("-------> aucun ami");
-        }
-    }
-
-    /**
-     * @param friend to add in listFriends
-     */
-    public void addFriends (User friend) {
-        this.listFriends.add(friend);		
-    }
-
     //-------------------------------------------MESSAGE-------------------------------------------
 
     /**
@@ -79,65 +52,23 @@ public class User {
                 System.out.println("Aucun message à supprimer");
             }
 
-            }
+        }
     }
 
     //-------------------------------------------USER----------------------------------------------
 
     public void setProfil(){
-            Menu.menuSetUser(this);
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-            this.name = name;
-    }
-
-    /**
-     * @param first_name the first_name to set
-     */
-    public void setFirst_name(String first_name) {
-            this.first_name = first_name;
-    }
-
-    /**
-     * @param age the age to set
-     */
-    public void setAge(int age) {
-            this.age = age;
+        Menu.menuSetUser(this);
     }
 
     /**
      * @return all attributes toString
      */
     public String displayProfil(){
-            return this.name + " " + this.first_name + " age : " + this.age + " ans";
-    }
-
-    /**
-     * @return name
-     */
-    public String getName(){
-            return this.name;
-    }
-
-    /**
-     * @return first name
-     */
-    public String getFirst_name(){
-            return this.first_name;
-    }
-
-    /**
-     * @return age
-     */
-    public int getAge(){
-            return this.age;
+        return this.name + " " + this.first_name + " age : " + this.getAge() + " ans";
     }
 
     public int getLevel_moderator() {
-            return level_moderator;
+        return level_moderator;
     }
 }

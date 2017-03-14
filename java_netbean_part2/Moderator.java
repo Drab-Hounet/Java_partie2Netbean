@@ -3,15 +3,12 @@ package java_netbean_part2;
  * @author drab
  *
  */
-public class Moderator extends User {
+public class Moderator extends User implements Salary {
 	
 	
     private int level_moderator = 1;
-    /**
-     * 
-     */
-    public Moderator() {
 
+    public Moderator() {
     }
 	
     public Moderator(String pName, String pFirst_name, int pAge, int plevel_moderator) {
@@ -19,9 +16,7 @@ public class Moderator extends User {
         level_moderator = plevel_moderator;
     }
 	
-    /**
-     * @Override the level_moderator
-     */
+    @Override
     public int getLevel_moderator() {
         return level_moderator;
     }
@@ -40,11 +35,15 @@ public class Moderator extends User {
 	
     @Override
     public String displayProfil(){
-        return super.displayProfil() + " Ton niveau de modération est de " + this.level_moderator;
+        return (super.displayProfil()) + " Ton niveau de modération est de " + this.level_moderator;
     }
 	
     @Override
     public void setProfil(){
-        Menu.menuSetProfile(this);
-    }	
+        Menu.menuSetMod(this);
+    }
+    @Override
+    public void paid(int payment){
+        System.out.println("bon d'achat de " + payment + " €");
+    }
 }

@@ -15,7 +15,7 @@ public class NavGeneral {
 
         Class<? extends User> classe = firstUser.getClass();
         firstUser.setProfil();
-        //Menu.menuSetUser(firstUser);
+        firstUser.connect();
 
         while(carryOnMenu){
 
@@ -47,7 +47,7 @@ public class NavGeneral {
                     if(firstUser.getListFriends().size() != group.getListUsers().size()){
                             Menu.saveFriends(group, firstUser);
                     }else{
-                            System.out.println("demande d'ami impossible");
+                        System.out.println("demande d'ami impossible");
                     }
                     break;
 
