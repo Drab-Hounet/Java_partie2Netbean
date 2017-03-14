@@ -1,5 +1,4 @@
 
-package java_netbean_part2;
 
 /**
  *

@@ -1,5 +1,3 @@
-package java_netbean_part2;
-
 /**
  *
  * @author jerome.lombard
