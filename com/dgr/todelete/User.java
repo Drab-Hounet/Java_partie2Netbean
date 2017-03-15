@@ -1,4 +1,7 @@
+package com.dgr.todelete;
 
+
+import com.dgr.attributes.Message;
 import java.util.ArrayList;
 
 public class User extends Person implements Relationship{

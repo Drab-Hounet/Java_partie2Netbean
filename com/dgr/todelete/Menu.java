@@ -1,5 +1,8 @@
+package com.dgr.todelete;
 
 
+
+import com.dgr.attributes.Message;
 import java.util.ArrayList;
 import java.util.Scanner;
 

@@ -1,3 +1,5 @@
+package com.dgr.todelete;
+
 /**
  *
  * @author jerome.lombard

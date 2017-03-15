@@ -1,4 +1,4 @@
-
+package com.dgr.attributes;
 
 import java.util.Scanner;
 

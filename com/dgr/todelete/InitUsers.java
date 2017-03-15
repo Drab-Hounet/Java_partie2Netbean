@@ -1,3 +1,7 @@
+package com.dgr.todelete;
+
+import com.dgr.attributes.Message;
+
 
 
 /**
