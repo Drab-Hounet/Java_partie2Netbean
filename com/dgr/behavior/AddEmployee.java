@@ -12,7 +12,8 @@ public class AddEmployee implements AddContact {
     
     @Override
     public ArrayList<Person> addSomeBody(Person person, ArrayList<Person> listContact){
-        System.out.println(person + "a été ajouté en tant qu'employé");
+        listContact.add(person);
+        System.out.println(person.getName() + " a été ajouté en tant qu'employé");
         return listContact;
     }
 }

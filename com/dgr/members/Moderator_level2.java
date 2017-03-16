@@ -12,13 +12,11 @@ public class Moderator_level2 extends Customer  {
     
     public Moderator_level2(){
         this.paid = new GoodBuy();
-        this.deleteAnyMessage = new DeleteMessUser();
     }
     
     public Moderator_level2(String pName, String pFirst_name, int pBirthYear){
         super(pName, pFirst_name, pBirthYear);
         this.paid = new GoodBuy();
-        this.deleteAnyMessage = new DeleteMessUser();
         this.menu = new MenuModerator2();
     }
 }

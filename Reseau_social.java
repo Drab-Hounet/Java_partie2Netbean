@@ -16,10 +16,12 @@ public class Reseau_social {
         Message message = new Message();
         GroupUser listUser = new GroupUser();
         
-        Person drab = new Director("drab", "hounet", 1983);
+        Person drab = new Developper("drab", "hounet", 1983);
         listUser.getListUsers().add(drab);
+        
         Person ben = new User("ben", "bronsart", 1979);
         listUser.getListUsers().add(ben);
+        ben.addMessage(message);
         Person adri = new Moderator_level1("adri", "taptap", 1986);
         listUser.getListUsers().add(adri);
         Person jojo = new Moderator_level2("jojo", "la terreur", 1988);
@@ -33,9 +35,7 @@ public class Reseau_social {
             System.out.println(listUser.getListUsers().get(i).displayProfil());
             listUser.getListUsers().get(i).toPay(1500);
             listUser.getListUsers().get(i).toAddSomeOne(new Employee("Paul", "", 1983));
-            listUser.getListUsers().get(i).toDeleteAnyOne(message);
-        }	
-
+        }
         jojo.toLoopMenu(listUser);
     }
 }

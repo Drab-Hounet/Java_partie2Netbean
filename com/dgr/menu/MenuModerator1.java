@@ -11,7 +11,6 @@ public class MenuModerator1 extends MenuGeneralCustomers {
     @Override
     public void display(){
         super.display();
-        
         System.out.println("9. 	Effacer un utilisateur(mode modérateur)");  
     }
     
@@ -20,12 +19,17 @@ public class MenuModerator1 extends MenuGeneralCustomers {
         super.controlMenu(user);
         switch(this.menuItem){
             case 9: 
-                System.out.println("9 à faire");
-                
-                //1 liste des users
-                //2 selection d un ultilisateur
-                //3 remove
+                //to remove an user
+                this.listUsers.getEachUser();
+                if(!this.listUsers.getListUsers().isEmpty()){      
+                    try{
+                        this.listUsers.getListUsers().remove(this.pointerToDelete("Quelle "
+                            + "utilisateur voulez vous effacer?"));
+                    }catch(Exception e){
+                        System.out.println("Opération Impossible");                   
+                    }
                 break;
-        }
+            }
+        } 
     }    
 }

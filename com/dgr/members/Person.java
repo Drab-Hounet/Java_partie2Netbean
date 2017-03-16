@@ -18,7 +18,6 @@ public abstract class Person {
     //protected ArrayList<Person> listContact = new ArrayList();
     protected GroupUser listContact = new GroupUser();
     
-    protected DeleteAnyMessage deleteAnyMessage = new DeleteNoMessUser();
     protected Menu menu = new MenuUser();
     
     protected String name = new String();
@@ -45,11 +44,7 @@ public abstract class Person {
     public void toPay(int amount){
         paid.pay(amount);
     }
-    
-    public void toDeleteAnyOne(Message message){
-        deleteAnyMessage.deleteMess(message);
-    }
-    
+        
     /**
      *
      * @param person
@@ -93,12 +88,7 @@ public abstract class Person {
         //in order to modify the behavior of adding contact
         this.addContact = addContact;
     }
-    
-    public void setToDeleteAnyOne(DeleteAnyMessage deleteAnyMessage){
-        //in order to modify the behavior of adding contact
-        this.deleteAnyMessage = deleteAnyMessage;
-    }
-    
+        
     public void setName(String name) {
         this.name = name;
     }

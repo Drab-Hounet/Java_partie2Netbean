@@ -13,7 +13,7 @@ public class AddFriend implements AddContact {
     @Override
     public ArrayList<Person> addSomeBody(Person person, ArrayList<Person> listContact){
         listContact.add(person);
-        System.out.println(person + "a été ajouté en tant qu'amis");
+        System.out.println(person.getName() + " a été ajouté en tant qu'amis");
         return listContact;
     }
 }

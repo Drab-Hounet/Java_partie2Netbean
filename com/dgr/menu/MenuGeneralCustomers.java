@@ -84,11 +84,7 @@ public abstract class MenuGeneralCustomers implements Menu{
                     }
                 }
                 break;
-            case 7:
-                //display all your friends
-                user.getListContacts().getEachUser();
-
-                break;
+                
             case 6:
                 //add a friend
                 if (this.listUsers.getEachUser()){
@@ -96,7 +92,12 @@ public abstract class MenuGeneralCustomers implements Menu{
                     user.toAddSomeOne(userToAdd);
                 }
                 break;
-            
+            case 7:
+                //display all your friends
+                user.getListContacts().getEachUser();
+
+                break;
+
             case 8:
                 //list of all users
                 this.listUsers.getEachUser();
@@ -107,8 +108,7 @@ public abstract class MenuGeneralCustomers implements Menu{
                 this.carryOn = false;
                 break;
             default:
-            
-            
+
         }
     }
     
@@ -155,7 +155,7 @@ public abstract class MenuGeneralCustomers implements Menu{
         }catch(Exception e){
         }
         input.nextLine();
-        return pointer;
+        return pointer-1;
     }
     
     

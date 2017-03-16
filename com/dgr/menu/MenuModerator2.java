@@ -1,6 +1,6 @@
 package com.dgr.menu;
 
-import com.dgr.members.Person;
+import com.dgr.members.*;
 
 /**
  *
@@ -19,8 +19,25 @@ public class MenuModerator2 extends MenuModerator1 {
         super.controlMenu(user);
         switch(this.menuItem){
             case 10: 
-                System.out.println("10 à faire");
+                //to remove a message from any user
+                Person userToDeleteMessage = new Customer();
+                this.listUsers.getEachUser();
+                if(!this.listUsers.getListUsers().isEmpty()){      
+                    try{
+                        userToDeleteMessage = this.listUsers.getListUsers().get(this.pointerToDelete("Sélectionner l'utilisateur :"));
+                    }catch(Exception e){
+                        System.out.println("Opération Impossible");   
+                        break;
+                    }
+                if(userToDeleteMessage.showMessage()){
+                    try{
+                        userToDeleteMessage.deleteMessage(this.pointerToDelete("Quel message souhaitez vous effacer ?"));
+                    }catch(Exception e){
+                        System.out.println("Opération Impossible");
+                    }
+                }
                 break;
+            }
         }
     }
 }
