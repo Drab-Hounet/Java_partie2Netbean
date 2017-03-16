@@ -2,6 +2,7 @@ package com.dgr.members;
 
 import com.dgr.attributes.*;
 import com.dgr.behavior.*;
+import com.dgr.menu.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,8 +15,11 @@ public abstract class Person {
     
     protected Paid paid = new Volunteer(); 
     protected AddContact addContact = new AddNoOne();
-    protected ArrayList<Person> listContact = new ArrayList();
+    //protected ArrayList<Person> listContact = new ArrayList();
+    protected GroupUser listContact = new GroupUser();
+    
     protected DeleteAnyMessage deleteAnyMessage = new DeleteNoMessUser();
+    protected Menu menu = new MenuUser();
     
     protected String name = new String();
     protected String first_name = new String();
@@ -51,7 +55,12 @@ public abstract class Person {
      * @param person
      */
     public void toAddSomeOne(Person person){
-        this.listContact = addContact.addSomeBody(person, this.listContact);
+        this.listContact.setListUsers(addContact.addSomeBody(person, this.listContact.getListUsers()));
+        //this.listContact = addContact.addSomeBody(person, this.listContact);
+    }
+    
+    public void toLoopMenu(GroupUser group){
+        this.menu.loopMenu(this , group);
     }
 
     public String getName() {
@@ -64,6 +73,10 @@ public abstract class Person {
     
     public int getBirthYear() {
         return birthYear;
+    }
+    
+    public GroupUser getListContacts(){
+        return this.listContact;
     }
     
     public String displayProfil(){
@@ -97,6 +110,21 @@ public abstract class Person {
     public void setBirthYear(int birthYear) {
         this.birthYear = birthYear;
     }
+    
+    public void addMessage(Message message){
+        System.out.println("opération impossible !");
+    }
+    
+    public boolean showMessage(){
+        System.out.println("opération impossible !");
+        return false;
+    }
+    
+    public void deleteMessage(int pointer){
+        System.out.println("opération impossible !");
+    }
+    
+    
 
 
     

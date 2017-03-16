@@ -14,21 +14,29 @@ public class Reseau_social {
         //nav.menu(group);
         
         Message message = new Message();
+        GroupUser listUser = new GroupUser();
         
-        ArrayList<Person> pers = new ArrayList();
-        pers.add(new Director("drab", "hounet", 1983));
-        pers.add(new User("ben", "bronsart", 1979));
-        pers.add(new Moderator_level1("adri", "taptap", 1986));
-        pers.add(new Moderator_level2("jojo", "la terreur", 1988));
-		
-        for(int i = 0; i < pers.size(); i++){
+        Person drab = new Director("drab", "hounet", 1983);
+        listUser.getListUsers().add(drab);
+        Person ben = new User("ben", "bronsart", 1979);
+        listUser.getListUsers().add(ben);
+        Person adri = new Moderator_level1("adri", "taptap", 1986);
+        listUser.getListUsers().add(adri);
+        Person jojo = new Moderator_level2("jojo", "la terreur", 1988);
+        listUser.getListUsers().add(jojo);
+        
+        
+        for(int i = 0; i < listUser.getListUsers().size(); i++){
             System.out.println("---------------------------------------------\n"
-                               + pers.get(i).getClass().getSimpleName() + " :");
-            System.out.println(pers.get(i).displayProfil());
-            pers.get(i).toPay(1500);
-            pers.get(i).toAddSomeOne(new Employee("Paul", "", 1983));
-            pers.get(i).toDeleteAnyOne(message);
-        }		 
+            + listUser.getListUsers().get(i).getClass().getSimpleName() + " :");
+            
+            System.out.println(listUser.getListUsers().get(i).displayProfil());
+            listUser.getListUsers().get(i).toPay(1500);
+            listUser.getListUsers().get(i).toAddSomeOne(new Employee("Paul", "", 1983));
+            listUser.getListUsers().get(i).toDeleteAnyOne(message);
+        }	
+
+        jojo.toLoopMenu(listUser);
     }
 }
 

@@ -1,7 +1,5 @@
 package com.dgr.todelete;
 
-
-
 import java.util.ArrayList;
 
 /**
@@ -38,6 +36,5 @@ public class GroupUser {
             this.getListUsers().remove(Menu.menuSelectUser(this, "Quel utilisateur souhaitez vous effacer?")-1);
             System.out.println("Utilisateur supprimé");
         }
-    }
-	
+    }	
 }

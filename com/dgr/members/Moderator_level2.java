@@ -1,6 +1,7 @@
 package com.dgr.members;
 
 import com.dgr.behavior.*;
+import com.dgr.menu.*;
 
 /**
  *
@@ -18,6 +19,6 @@ public class Moderator_level2 extends Customer  {
         super(pName, pFirst_name, pBirthYear);
         this.paid = new GoodBuy();
         this.deleteAnyMessage = new DeleteMessUser();
-        
+        this.menu = new MenuModerator2();
     }
 }

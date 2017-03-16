@@ -18,16 +18,25 @@ public class GroupUser {
         return this.listUsers;
     }
     
-    public void getEachUser() {
+    public boolean getEachUser() {
         if(!this.listUsers.isEmpty()){
             for (int i = 0 ; i < this.listUsers.size(); i++){
                 System.out.println( (i+1) + ". " 
                                     + listUsers.get(i).displayProfil());	
             }
+            return true;
         }else {
             System.out.println("-------> aucun utilisateur");
         }
+        return false;
     }
+    
+    public void setListUsers(ArrayList<Person> listUsers){
+        this.listUsers = listUsers;
+    }
+    
+    
+    
     
     
 }
