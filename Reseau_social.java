@@ -9,7 +9,7 @@ public class Reseau_social {
         GroupPerson listCustomers = new GroupPerson();
         GroupPerson listEmployee = new GroupPerson();
         
-        Person drab = new Developper("drab", "hounet", 1983, 4000);
+        Person drab = new Director("drab", "hounet", 1983, 4000);
         listEmployee.getListUsers().add(drab);
         
         Person ben = new User("ben", "bronsart", 1979);
@@ -20,16 +20,16 @@ public class Reseau_social {
         Person jojo = new Moderator_level2("jojo", "la terreur", 1988, 100);
         listCustomers.getListUsers().add(jojo);
         
-        for(int i = 0; i < listCustomers.getListUsers().size(); i++){
-            System.out.println("---------------------------------------------\n"
-            + listCustomers.getListUsers().get(i).getClass().getSimpleName() + " :");
-            
-            System.out.println(listCustomers.getListUsers().get(i).displayProfil());
-            listCustomers.getListUsers().get(i).toPay(1500);
-            listCustomers.getListUsers().get(i).toAddSomeOne(new Employee("Paul", "", 1983));
-        }
-        ben.toLoopMenu(listCustomers);
-        //drab.toLoopMenu(listEmployee);
+//        for(int i = 0; i < listCustomers.getListUsers().size(); i++){
+//            System.out.println("---------------------------------------------\n"
+//            + listCustomers.getListUsers().get(i).getClass().getSimpleName() + " :");
+//            
+//            System.out.println(listCustomers.getListUsers().get(i).displayProfil());
+//            listCustomers.getListUsers().get(i).toPay(1500);
+//            listCustomers.getListUsers().get(i).toAddSomeOne(new Employee("Paul", "", 1983));
+//        }
+        //ben.toLoopMenu(listCustomers);
+        drab.toLoopMenu(listEmployee);
     }
 }
 

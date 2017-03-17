@@ -75,7 +75,7 @@ public abstract class Person {
     }
     
     public String displayProfil(){
-        return  this.getName() + " " + this.getFirst_name() 
+        return  this.getClass().getSimpleName() + " : " + this.getName() + " " + this.getFirst_name() 
                 + " année de naissance : " + this.getBirthYear();
     }
     

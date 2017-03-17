@@ -1,6 +1,5 @@
 package com.dgr.menu;
 
-import com.dgr.attributes.*;
 import com.dgr.members.*;
 
 /**

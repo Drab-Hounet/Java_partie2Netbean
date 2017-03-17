@@ -12,7 +12,7 @@ public class GoodBuy implements Paid{
     @Override
     public String pay(int amount){
         this.remuneration = amount;
-        return "\nLe montant de votre rénumération est de " 
+        return "\nLe montant de la rénumération est de " 
                             + this.remuneration + " € en bon d'achat";
     } 
     
