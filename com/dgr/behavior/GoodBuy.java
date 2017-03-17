@@ -8,14 +8,17 @@ package com.dgr.behavior;
 public class GoodBuy implements Paid{
     public int remuneration;
 
-    /**
-     *
-     * @param amount
-     */
+
     @Override
-    public void pay(int amount){
+    public String pay(int amount){
         this.remuneration = amount;
-        System.out.println("Le montant de votre rénumération est de " 
-                            + this.remuneration + " € en bon d'achat");
+        return "\nLe montant de votre rénumération est de " 
+                            + this.remuneration + " € en bon d'achat";
     } 
+    
+    @Override
+    public int getRenumeration(){
+        return this.remuneration;
+    }
+    
 }

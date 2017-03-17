@@ -20,10 +20,10 @@ public class MenuModerator1 extends MenuGeneralCustomers {
         switch(this.menuItem){
             case 9: 
                 //to remove an user
-                this.listUsers.getEachUser();
-                if(!this.listUsers.getListUsers().isEmpty()){      
+                this.listContacts.getEachUser();
+                if(!this.listContacts.getListUsers().isEmpty()){      
                     try{
-                        this.listUsers.getListUsers().remove(this.pointerToDelete("Quelle "
+                        this.listContacts.getListUsers().remove(this.pointerToDelete("Quel "
                             + "utilisateur voulez vous effacer?"));
                     }catch(Exception e){
                         System.out.println("Opération Impossible");                   

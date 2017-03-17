@@ -1,42 +1,35 @@
 
 import com.dgr.attributes.*;
 import com.dgr.members.*;
-import java.util.ArrayList;
 
 public class Reseau_social {
     public static void main(String[] args) {
-        
-        //initialisation of users
-        //InitUsers init = new InitUsers();
-        //GroupUser group = init.getGroup();
-
-        //NavGeneral nav = new NavGeneral();
-        //nav.menu(group);
-        
+                
         Message message = new Message();
-        GroupUser listUser = new GroupUser();
+        GroupPerson listCustomers = new GroupPerson();
+        GroupPerson listEmployee = new GroupPerson();
         
-        Person drab = new Developper("drab", "hounet", 1983);
-        listUser.getListUsers().add(drab);
+        Person drab = new Developper("drab", "hounet", 1983, 4000);
+        listEmployee.getListUsers().add(drab);
         
         Person ben = new User("ben", "bronsart", 1979);
-        listUser.getListUsers().add(ben);
+        listCustomers.getListUsers().add(ben);
         ben.addMessage(message);
-        Person adri = new Moderator_level1("adri", "taptap", 1986);
-        listUser.getListUsers().add(adri);
-        Person jojo = new Moderator_level2("jojo", "la terreur", 1988);
-        listUser.getListUsers().add(jojo);
+        Person adri = new Moderator_level1("adri", "taptap", 1986, 50);
+        listCustomers.getListUsers().add(adri);
+        Person jojo = new Moderator_level2("jojo", "la terreur", 1988, 100);
+        listCustomers.getListUsers().add(jojo);
         
-        
-        for(int i = 0; i < listUser.getListUsers().size(); i++){
+        for(int i = 0; i < listCustomers.getListUsers().size(); i++){
             System.out.println("---------------------------------------------\n"
-            + listUser.getListUsers().get(i).getClass().getSimpleName() + " :");
+            + listCustomers.getListUsers().get(i).getClass().getSimpleName() + " :");
             
-            System.out.println(listUser.getListUsers().get(i).displayProfil());
-            listUser.getListUsers().get(i).toPay(1500);
-            listUser.getListUsers().get(i).toAddSomeOne(new Employee("Paul", "", 1983));
+            System.out.println(listCustomers.getListUsers().get(i).displayProfil());
+            listCustomers.getListUsers().get(i).toPay(1500);
+            listCustomers.getListUsers().get(i).toAddSomeOne(new Employee("Paul", "", 1983));
         }
-        jojo.toLoopMenu(listUser);
+        ben.toLoopMenu(listCustomers);
+        //drab.toLoopMenu(listEmployee);
     }
 }
 

@@ -11,7 +11,7 @@ import com.dgr.members.*;
 public interface Menu {
     public void     display();
     public int      returnDisplay();
-    public void     loopMenu(Person user, GroupUser list);
+    public void     loopMenu(Person user, GroupPerson list);
     public void     controlMenu(Person user);
     public void     setProfil(Person user);
     public int      pointerToDelete(String message);

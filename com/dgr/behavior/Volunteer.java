@@ -8,12 +8,13 @@ package com.dgr.behavior;
 public class Volunteer implements Paid{
     //public int remuneration;
     
-    /**
-     *
-     * @param amount
-     */
     @Override
-    public void pay(int amount){
-        System.out.println("Pas de renumération");
+    public String pay(int amount){
+        return "Pas de renumération";
+    }
+    
+    @Override
+    public int getRenumeration(){
+        return 0;
     }
 }

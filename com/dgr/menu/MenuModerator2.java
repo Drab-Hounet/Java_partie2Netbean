@@ -21,10 +21,10 @@ public class MenuModerator2 extends MenuModerator1 {
             case 10: 
                 //to remove a message from any user
                 Person userToDeleteMessage = new Customer();
-                this.listUsers.getEachUser();
-                if(!this.listUsers.getListUsers().isEmpty()){      
+                this.listContacts.getEachUser();
+                if(!this.listContacts.getListUsers().isEmpty()){      
                     try{
-                        userToDeleteMessage = this.listUsers.getListUsers().get(this.pointerToDelete("Sélectionner l'utilisateur :"));
+                        userToDeleteMessage = this.listContacts.getListUsers().get(this.pointerToDelete("Sélectionner l'utilisateur :"));
                     }catch(Exception e){
                         System.out.println("Opération Impossible");   
                         break;

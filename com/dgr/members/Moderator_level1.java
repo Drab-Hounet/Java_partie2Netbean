@@ -15,9 +15,15 @@ public class Moderator_level1 extends Customer {
         this.menu = new MenuModerator1();
     }
     
-    public Moderator_level1(String pName, String pFirst_name, int pBirthYear){
+    public Moderator_level1(String pName, String pFirst_name, int pBirthYear, int salary){
         super(pName, pFirst_name, pBirthYear);
         this.paid = new GoodBuy();
         this.menu = new MenuModerator1();
+        this.renumeration = salary;
+    }
+    
+    @Override
+    public String displayProfil(){
+        return super.displayProfil() + this.toPay(this.renumeration);
     }
 }

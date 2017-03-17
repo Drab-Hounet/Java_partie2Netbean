@@ -4,7 +4,6 @@ import com.dgr.attributes.*;
 import com.dgr.behavior.*;
 import com.dgr.menu.*;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -15,9 +14,8 @@ public abstract class Person {
     
     protected Paid paid = new Volunteer(); 
     protected AddContact addContact = new AddNoOne();
-    //protected ArrayList<Person> listContact = new ArrayList();
-    protected GroupUser listContact = new GroupUser();
-    
+    protected GroupPerson listContact = new GroupPerson();
+    protected int renumeration;
     protected Menu menu = new MenuUser();
     
     protected String name = new String();
@@ -37,12 +35,13 @@ public abstract class Person {
     
     //--------------------------------------------------------------------------
     
-    /**
-     *
-     * @param amount
-     */
-    public void toPay(int amount){
-        paid.pay(amount);
+
+    public String toPay(int amount){
+        return paid.pay(amount);
+    }
+    
+    public int toGetRenumeration(){
+        return this.paid.getRenumeration();
     }
         
     /**
@@ -54,9 +53,10 @@ public abstract class Person {
         //this.listContact = addContact.addSomeBody(person, this.listContact);
     }
     
-    public void toLoopMenu(GroupUser group){
+    public void toLoopMenu(GroupPerson group){
         this.menu.loopMenu(this , group);
     }
+    
 
     public String getName() {
         return name;
@@ -70,7 +70,7 @@ public abstract class Person {
         return birthYear;
     }
     
-    public GroupUser getListContacts(){
+    public GroupPerson getGroupContacts(){
         return this.listContact;
     }
     

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author jerome.lombard
  */
-public class GroupUser {
+public class GroupPerson {
     private ArrayList<Person> listUsers = new ArrayList<>();
     
     /**
@@ -26,7 +26,7 @@ public class GroupUser {
             }
             return true;
         }else {
-            System.out.println("-------> aucun utilisateur");
+            System.out.println("-------> liste vide");
         }
         return false;
     }
