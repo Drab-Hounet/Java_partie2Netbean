@@ -78,5 +78,16 @@ public class MenuDirector extends MenuGeneralEmployees {
                 }
                 break;
         }
-    }    
+    } 
+    
+    @Override
+    public void setProfil(Person user) {
+        super.setProfil(user);
+        if(user.toGetRenumeration() == 0){
+            System.out.println("Renseigner la renummération: ");
+        }else{
+            System.out.println("Modifier la renummération de " + user.toGetRenumeration() + " €");
+        }
+        user.toSetRenumeration(input.nextInt());
+    }
 }

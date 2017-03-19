@@ -43,6 +43,10 @@ public abstract class Person {
     public int toGetRenumeration(){
         return this.paid.getRenumeration();
     }
+    
+    public void toSetRenumeration(int amount){
+        this.renumeration = amount;
+    }
         
     /**
      *

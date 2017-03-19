@@ -12,7 +12,7 @@ public abstract class MenuGeneralCustomers extends MenuGeneral{
     @Override
     public void display(){
 
-        System.out.println("Choisissez : (Pour quitter taper 0)");
+        System.out.println("\nChoisissez : (Pour quitter taper 0)");
         System.out.println("1. 	Afficher votre profil");
         System.out.println("2. 	Modifier votre profil");
         System.out.println("3. 	Ecrire un message");

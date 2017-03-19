@@ -10,6 +10,7 @@ public class Salary implements Paid {
     /**
      *
      * @param amount
+     * @return 
      */
     @Override
     public String pay(int amount){
