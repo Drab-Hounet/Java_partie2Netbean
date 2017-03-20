@@ -23,7 +23,7 @@ public class MenuModerator1 extends MenuGeneralCustomers {
                 this.listContacts.getEachUser();
                 if(!this.listContacts.getListUsers().isEmpty()){      
                     try{
-                        this.listContacts.getListUsers().remove(this.pointerToDelete("Quel "
+                        this.listContacts.getListUsers().remove(this.pointerToSelect("Quel "
                             + "utilisateur voulez vous effacer?"));
                     }catch(Exception e){
                         System.out.println("Opération Impossible");                   

@@ -30,14 +30,17 @@ public class Customer extends Person{
     public boolean showMessage(){
        if(!this.listMessage.isEmpty()){
             for(int i = 0 ; i < this.listMessage.size() ; i ++){
-                System.out.println((i+1) + ". : " + this.listMessage.get(i).getContent());
-                return true;
+                Message messageIt = this.listMessage.get(i);
+                System.out.println((i+1) + ". :       EXP :      " + messageIt.getSender().getName()
+                                        + "\n           DEST :     " + messageIt.getReceiver().getName()
+                                        + "\n           Content :  " +messageIt.displayMessage());
+                //System.out.println((i+1) + ". : " + this.listMessage.get(i).displayMessage());
             }
+            return true;
         }else{
             System.out.println("-------> aucun message");
             return false;
         }
-        return false;
     }  
     
     @Override

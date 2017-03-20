@@ -13,5 +13,5 @@ public interface Menu {
     public void     loopMenu(Person user, GroupPerson list);
     public void     controlMenu(Person user);
     public void     setProfil(Person user);
-    public int      pointerToDelete(String message);
+    public int      pointerToSelect(String message);
 }

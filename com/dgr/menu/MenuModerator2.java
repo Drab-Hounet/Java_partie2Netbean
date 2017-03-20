@@ -24,14 +24,14 @@ public class MenuModerator2 extends MenuModerator1 {
                 this.listContacts.getEachUser();
                 if(!this.listContacts.getListUsers().isEmpty()){      
                     try{
-                        userToDeleteMessage = this.listContacts.getListUsers().get(this.pointerToDelete("Sélectionner l'utilisateur :"));
+                        userToDeleteMessage = this.listContacts.getListUsers().get(this.pointerToSelect("Sélectionner l'utilisateur :"));
                     }catch(Exception e){
                         System.out.println("Opération Impossible");   
                         break;
                     }
                 if(userToDeleteMessage.showMessage()){
                     try{
-                        userToDeleteMessage.deleteMessage(this.pointerToDelete("Quel message souhaitez vous effacer ?"));
+                        userToDeleteMessage.deleteMessage(this.pointerToSelect("Quel message souhaitez vous effacer ?"));
                     }catch(Exception e){
                         System.out.println("Opération Impossible");
                     }

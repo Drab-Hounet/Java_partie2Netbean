@@ -31,13 +31,14 @@ public abstract class MenuGeneral implements Menu {
     public void loopMenu(Person user, GroupPerson list){
         //loop the menu
         this.listContacts = list;
+        this.carryOn = true;
         while(carryOn){
             this.controlMenu(user);
         }
     }
     
     @Override
-    public int pointerToDelete(String message){
+    public int pointerToSelect(String message){
         //ask to give one message to delete
         System.out.println(message);
         int pointer= -1;

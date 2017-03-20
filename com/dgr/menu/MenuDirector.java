@@ -32,7 +32,7 @@ public class MenuDirector extends MenuGeneralEmployees {
                 //hire an employee
                 if (this.listContacts.getEachUser()){
                     try{
-                        Person employeeToAdd = listContacts.getListUsers().get(this.pointerToDelete("Quel employé souhaitez vous ajouter?"));
+                        Person employeeToAdd = listContacts.getListUsers().get(this.pointerToSelect("Quel employé souhaitez vous ajouter?"));
                         user.toAddSomeOne(employeeToAdd);
                     }catch(Exception e){
                         System.out.println("Opération impossible");
@@ -57,7 +57,7 @@ public class MenuDirector extends MenuGeneralEmployees {
                 user.getGroupContacts().getEachUser();
                 if(!user.getGroupContacts().getListUsers().isEmpty()){
                     try{
-                        user.getGroupContacts().getListUsers().remove(this.pointerToDelete("Quel employé souhaitez vous licensier?"));
+                        user.getGroupContacts().getListUsers().remove(this.pointerToSelect("Quel employé souhaitez vous licensier?"));
                         System.out.println("Employé licencié");
                     }catch(Exception e){
                         System.out.println("Opération impossible");
@@ -70,7 +70,7 @@ public class MenuDirector extends MenuGeneralEmployees {
                 this.listContacts.getEachUser();
                 if(!this.listContacts.getListUsers().isEmpty()){     
                     try{
-                        this.listContacts.getListUsers().remove(this.pointerToDelete("Quel "
+                        this.listContacts.getListUsers().remove(this.pointerToSelect("Quel "
                             + "employé voulez vous effacer?"));
                     }catch(Exception e){
                         System.out.println("Opération Impossible");                   

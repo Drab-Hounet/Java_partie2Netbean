@@ -38,18 +38,23 @@ public class Connexion {
             System.out.println("1.  CONNEXION");
             System.out.println("2.  INSCRIPTION");
             System.out.println("3.  VOIR LA LISTES DES UTILISATEURS");
-            item = input.nextInt();
+            try{
+                item = input.nextInt();
+            }catch(Exception e){
+                item = -1;
+                input.nextLine();
+            }
         
             switch (item) {
                 case 1:
                     input.nextLine();
-                    carryOn = this.displayLogin();
+                    this.displayLogin();
                     break;
                 case 2:
-                    carryOn = this.displayRegister();
+                    this.displayRegister();
                     break;
                 case 3:
-                    carryOn = this.displayListUsers();
+                    this.displayListUsers();
                     break;
                 default:
                     break;
@@ -59,7 +64,7 @@ public class Connexion {
             }
         }
     }
-    public boolean displayLogin(){
+    public void displayLogin(){
         //display and check login access
         System.out.println("Renseigner vos identiants");
         System.out.println("Votre nom?");
@@ -71,42 +76,39 @@ public class Connexion {
         this.verifyIfExist(name, first_name);
         System.out.println(this.personToConnect);
         if(this.personToConnect != null){
-            //à faire -> ajouter le test de class entre employee et customers
             if(personToConnect.getClass().getSuperclass().getSimpleName().equals("Employee")){
+                System.out.println("\nVous êtes bien connecté !\n");
                 this.personToConnect.toLoopMenu(groupEmployees);
             }else{
+                System.out.println("\nVous êtes bien connecté !\n");
                 this.personToConnect.toLoopMenu(groupCustomers);
             }
-            return false;
         }
-        return true;
     }
     
-    public boolean displayRegister(){
+    public void displayRegister(){
         //à faire
         Customer userToCreate = new User();
         MenuGeneral menu = new MenuUser();
         
         menu.setProfil(userToCreate);
         this.groupCustomers.getListUsers().add(userToCreate);
-        return true;
     }
     
-    public boolean displayListUsers(){
+    public void displayListUsers(){
         //display all users(employees and customers)
         System.out.println("-----> liste des Utilisateurs");
         this.groupCustomers.getEachUser();
         System.out.println("\n-----> liste des Employés");
         this.groupEmployees.getEachUser();
-        return true;
     }
     
     public void verifyIfExist(String name, String first_name){
         
         //check in customers
         for (Person person : this.groupCustomers.getListUsers()){
-            if (person.getFirst_name().equals(first_name) && person.getName().equals(name)){      
-                this.setPersonToConnect(person);
+            if (person.getFirst_name().equals(first_name) && person.getName().equals(name)){     
+                this.personToConnect = person;
             }
         }
         //check in employees

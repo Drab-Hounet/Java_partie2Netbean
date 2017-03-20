@@ -38,10 +38,8 @@ public abstract class MenuGeneralCustomers extends MenuGeneral{
                 this.setProfil(user);
                 break;
             case 3:
-                //add a message
-                Message message = new Message();
-                message.setContent();
-                user.addMessage(message);
+                //add a message                
+                this.setMessage(user);
                 break;
             case 4:
                 //show messages
@@ -51,7 +49,7 @@ public abstract class MenuGeneralCustomers extends MenuGeneral{
                 //delete one of my messages
                 if(user.showMessage()){
                     try{
-                        user.deleteMessage(this.pointerToDelete("Quel message souhaitez vous effacer ?"));
+                        user.deleteMessage(this.pointerToSelect("Quel message souhaitez vous effacer ?"));
                     }catch(Exception e){
                         System.out.println("Opération Impossible");
                     }
@@ -62,7 +60,7 @@ public abstract class MenuGeneralCustomers extends MenuGeneral{
                 //add a friend
                 if (this.listContacts.getEachUser()){
                     try{
-                        Person userToAdd = listContacts.getListUsers().get(this.pointerToDelete("Quel utilisateur souhaitez vous ajouter?"));
+                        Person userToAdd = listContacts.getListUsers().get(this.pointerToSelect("Quel utilisateur souhaitez vous ajouter?"));
                         user.toAddSomeOne(userToAdd);
                     }catch(Exception e){
                         System.out.println("Opération impossible");
@@ -81,12 +79,39 @@ public abstract class MenuGeneralCustomers extends MenuGeneral{
                 break;
             case 0:
                 //end of program
-                System.out.println("Programme terminé !");
+                System.out.println("Vous êtes déconnecté !");
                 this.carryOn = false;
                 break;
             default:
 
         }
+    }
+    
+    public void setMessage(Person sender){
+        //making of message
+        Person userToSendMessage = new Customer();
+        String content = new String();
+        
+        System.out.println(this.listContacts.getEachUser());
+        try{
+            userToSendMessage = this.listContacts.getListUsers().get(this.pointerToSelect("\nA qui voulez vous envoyer votre message?"));
+        }catch(Exception e){
+            userToSendMessage = null;
+        }
+        if(userToSendMessage != null){
+            System.out.println("\n Quel est votre message pour : " + userToSendMessage.getName() + " ?");
+            content = input.nextLine();
+
+            Message message = new Message(content, sender, userToSendMessage);
+            sender.addMessage(message);
+            userToSendMessage.addMessage(message);
+
+            System.out.println("Message envoyé !");
+        }else{
+            System.out.println("Erreur de saisie !");
+        }
+
+        
     }
  
 }
