@@ -65,9 +65,6 @@ public class Message {
     
     public String displayMessage(){
         return this.getContent();
-//        return  "\n" +this.getSender() + " a envoyé : " 
-//                + this.getContent()  
-//                + "pour : " + this.getReceiver();
     }
 	
 }

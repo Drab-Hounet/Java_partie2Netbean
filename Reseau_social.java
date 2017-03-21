@@ -2,6 +2,7 @@
 import com.dgr.attributes.*;
 import com.dgr.members.*;
 import com.dgr.menu.*;
+import com.dgr.swing.*;
 
 public class Reseau_social {
     public static void main(String[] args) {
@@ -25,8 +26,11 @@ public class Reseau_social {
         Person jojo = new Moderator_level2("jojo", "la terreur", 1988, 100);
         listCustomers.getListUsers().add(jojo);
 
-        Connexion connexion = new Connexion(listEmployee, listCustomers);
-        connexion.display();
+        //Connexion connexion = new Connexion(listEmployee, listCustomers);
+        //connexion.display();
+        
+        FenConnexion fenConnexion = new FenConnexion(listEmployee, listCustomers);
+        fenConnexion.setVisible(true);
         
     }
 }

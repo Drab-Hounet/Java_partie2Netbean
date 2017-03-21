@@ -21,6 +21,7 @@ public class Moderator_level1 extends Customer {
         this.menu = new MenuModerator1();
         this.renumeration = salary;
     }
+
     
     @Override
     public String displayProfil(){
