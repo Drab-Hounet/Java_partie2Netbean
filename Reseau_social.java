@@ -1,8 +1,13 @@
 
 import com.dgr.attributes.*;
+import com.dgr.dao.*;
 import com.dgr.members.*;
-import com.dgr.menu.*;
 import com.dgr.swing.*;
+
+
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Reseau_social {
     public static void main(String[] args) {
@@ -25,13 +30,32 @@ public class Reseau_social {
 
         Person jojo = new Moderator_level2("jojo", "la terreur", 1988, 100);
         listCustomers.getListUsers().add(jojo);
+            
+            //FenConnexion fenConnexion = new FenConnexion(listEmployee, listCustomers);
+            //fenConnexion.setVisible(true);
+        try {
+            //Création d'un objet Statement
+            Statement state = ResSocConnexion.getInstance().createStatement();
+            
+            ResultSet result = state.executeQuery("SELECT * FROM persons");
+            
+//            while(result.next()){   
+//                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("first_name"));
+//                System.out.println(result.getString("birth_year"));
+//                System.out.println(result.getString("role"));
+//                System.out.println(result.getString("salary"));
+//            }   
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Reseau_social.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        DAO<Person> personDAO = new PersonDAO(ResSocConnexion.getInstance());
+        
+        Person person = personDAO.find(1);
+        System.out.println( person.getName()+ "  - " + person.getFirst_name()+ " " + person.getBirthYear());
 
-        //Connexion connexion = new Connexion(listEmployee, listCustomers);
-        //connexion.display();
-        
-        FenConnexion fenConnexion = new FenConnexion(listEmployee, listCustomers);
-        fenConnexion.setVisible(true);
-        
     }
 }
 

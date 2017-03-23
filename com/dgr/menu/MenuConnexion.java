@@ -9,7 +9,7 @@ import java.util.Scanner;
  *
  * @author jerome.lombard
  */
-public class Connexion {
+public class MenuConnexion {
     
     public GroupPerson groupEmployees = new GroupPerson();
     public GroupPerson groupCustomers = new GroupPerson();
@@ -24,7 +24,7 @@ public class Connexion {
         this.personToConnect = personToConnect;
     }
 
-    public Connexion(GroupPerson groupEmployees, GroupPerson groupCustomers){
+    public MenuConnexion(GroupPerson groupEmployees, GroupPerson groupCustomers){
         this.groupCustomers = groupCustomers;
         this.groupEmployees = groupEmployees;
     }

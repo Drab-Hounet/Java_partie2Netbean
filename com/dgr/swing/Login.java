@@ -3,6 +3,7 @@ package com.dgr.swing;
 
 import com.dgr.menu.*;
 import static javax.swing.JOptionPane.showMessageDialog;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -121,9 +122,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println(inputName.getText());
         System.out.println(inputFirst_name.getText());
-        Connexion connexion = new Connexion(fenConnexion.listEmployees,fenConnexion.listCustomers);
+        MenuConnexion connexion = new MenuConnexion(fenConnexion.listEmployees,fenConnexion.listCustomers);
         if(connexion.verifyIfExist(inputName.getText(), inputFirst_name.getText())){
             showMessageDialog(this, inputFirst_name.getText() + "\nVous êtes connecté !");
+            
         }else{
             showMessageDialog(this, "Oups!! nom ou prénom inconnu !");
         }
