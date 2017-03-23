@@ -1,27 +1,70 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.dgr.swing;
+
+import com.dgr.members.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import java.util.Calendar;
 
 /**
  *
  * @author jerome.lombard
  */
-public class ListingPerson extends javax.swing.JFrame {
+public final class ListingPerson extends javax.swing.JFrame {
 
     /**
      * Creates new form ListingPerson
      */
-    private FenConnexion fenConnexion ;
-    
-    
+    private final FenConnexion fenConnexion ;
+      
     public ListingPerson(FenConnexion fenConnexion) {
         this.fenConnexion = fenConnexion;
         initComponents();
+        this.addRowToJTable();       
     }
 
+    public ArrayList listUsers(){
+        ArrayList<Person> listGen = new ArrayList();
+    
+        for(Person user : fenConnexion.listCustomers.getListUsers()){
+            listGen.add(user);
+            System.out.println(user.getName());
+        }
+        for(Person user : fenConnexion.listEmployees.getListUsers()){
+            listGen.add(user);
+            System.out.println(user.getName());
+        }
+        return listGen;
+    }
+    
+    public void addRowToJTable(Person newUser){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Object rowData[] = new Object[4];
+        rowData[0] = newUser.getName();
+        rowData[1] = newUser.getFirst_name();
+        int age = Calendar.getInstance().get(Calendar.YEAR) - newUser.getBirthYear();
+        rowData[2] = age;
+        rowData[3] = newUser.getClass().getSimpleName();
+        model.addRow(rowData);
+    }
+    
+    
+    public void addRowToJTable(){
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        ArrayList<Person> list = this.listUsers();
+        Object rowData[] = new Object[4];
+        for(int i = 0 ; i < list.size() ; i++){
+            rowData[0] = list.get(i).getName();
+            rowData[1] = list.get(i).getFirst_name();
+            int age = Calendar.getInstance().get(Calendar.YEAR) - list.get(i).getBirthYear();
+            rowData[2] = age;
+            rowData[3] = list.get(i).getClass().getSimpleName();
+            model.addRow(rowData);
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,16 +86,24 @@ public class ListingPerson extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Nom", "Prénom", "Age", "Rôle"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(2);
+        }
 
         jButton1.setText("Retour");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,8 +144,6 @@ public class ListingPerson extends javax.swing.JFrame {
         this.setVisible(false);
         fenConnexion.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

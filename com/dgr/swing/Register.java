@@ -10,9 +10,10 @@ import static javax.swing.JOptionPane.showMessageDialog;
  */
 public class Register extends javax.swing.JFrame {
     
-    private FenConnexion fenConnexion;
+    private final FenConnexion fenConnexion;
     /**
      * Creates new form Register
+     * @param fenConnexion
      */
     public Register(FenConnexion fenConnexion) {
         initComponents();
@@ -218,9 +219,9 @@ public class Register extends javax.swing.JFrame {
                 fenConnexion.listCustomers.getListUsers().add(personToCreate);
                 this.setVisible(false);
                 fenConnexion.setVisible(true);
-            
+                fenConnexion.listingPerson.addRowToJTable(personToCreate);
             }catch(Exception e){
-                showMessageDialog(this, "Attention année incorrecte !!");;   
+                showMessageDialog(this, "Attention année incorrecte !!");
             }
         
         }else if(listRole.getSelectedItem().equals("Modérateur")){
@@ -230,9 +231,9 @@ public class Register extends javax.swing.JFrame {
                 fenConnexion.listCustomers.getListUsers().add(personToCreate);
                 this.setVisible(false);
                 fenConnexion.setVisible(true);
-            
+                fenConnexion.listingPerson.addRowToJTable(personToCreate);
             }catch(Exception e){
-                showMessageDialog(this, "Attention année incorrecte !!");;   
+                showMessageDialog(this, "Attention année incorrecte !!");
             }
         
         }else if(listRole.getSelectedItem().equals("Directeur")){
@@ -240,21 +241,15 @@ public class Register extends javax.swing.JFrame {
                 birthYear = Integer.parseInt(inputBirthYear.getText());
                 salary = Integer.parseInt(inputSalary.getText());
                 personToCreate = new Director   (inputName.getText(), inputFirst_name.getText(), birthYear, salary);
-                fenConnexion.listCustomers.getListUsers().add(personToCreate);
+                fenConnexion.listEmployees.getListUsers().add(personToCreate);
                 this.setVisible(false);
                 fenConnexion.setVisible(true);
+                fenConnexion.listingPerson.addRowToJTable(personToCreate);
 
             }catch(Exception e){
-                showMessageDialog(this, "Attention année incorrecte !!");;   
+                showMessageDialog(this, "Attention donnée incorrecte !!");  
             }
         }
-        
-        
-        
-        System.out.println(inputBirthYear.getText());
-
-        
-        
     }//GEN-LAST:event_buttonValidateRegisterActionPerformed
 
     private void inputFirst_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFirst_nameActionPerformed

@@ -4,8 +4,6 @@ import com.dgr.attributes.*;
 import com.dgr.behavior.*;
 import com.dgr.menu.*;
 
-import java.util.Calendar;
-
 /**
  *
  * @author jerome.lombard

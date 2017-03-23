@@ -12,17 +12,23 @@ public class FenConnexion extends javax.swing.JFrame {
     
     public GroupPerson listEmployees;
     public GroupPerson listCustomers;
-    private ListingPerson listingPerson = new ListingPerson(this);
-    private Login login = new Login(this);
-    private Register register = new Register(this);
+    public final ListingPerson listingPerson;
+    private final Login login;
+    private Register register;
     
     /**
      * Creates new form FenConnexion
+     * @param listEmployees
+     * @param listCustomers
      */
     public FenConnexion(GroupPerson listEmployees, GroupPerson listCustomers) {
         initComponents();
         this.listCustomers = listCustomers;
         this.listEmployees = listEmployees;
+        listingPerson = new ListingPerson(this);
+        login = new Login(this);
+        register = new Register(this);
+        
     }
 
     /**
@@ -128,7 +134,6 @@ public class FenConnexion extends javax.swing.JFrame {
         System.out.println("login");
         this.setVisible(false);
         login.setVisible(true);
-        
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed

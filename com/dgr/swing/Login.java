@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.dgr.swing;
 
 import com.dgr.menu.*;
@@ -14,9 +10,10 @@ import static javax.swing.JOptionPane.showMessageDialog;
  */
 public class Login extends javax.swing.JFrame {
     
-    private FenConnexion fenConnexion ;
+    private final FenConnexion fenConnexion ;
     /**
      * Creates new form Login
+     * @param fenConnexion
      */
     public Login(FenConnexion fenConnexion) {
         initComponents();
