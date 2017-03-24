@@ -1,6 +1,9 @@
 
 package com.dgr.swing;
 
+import com.dgr.attributes.ResSocConnexion;
+import com.dgr.dao.DAO;
+import com.dgr.dao.PersonDAO;
 import com.dgr.members.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -50,9 +53,10 @@ public final class ListingPerson extends javax.swing.JFrame {
     
     
     public void addRowToJTable(){
-
+        
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        ArrayList<Person> list = this.listUsers();
+        DAO<Person> personDAO = new PersonDAO(ResSocConnexion.getInstance());
+        ArrayList<Person> list = personDAO.findAll();
         Object rowData[] = new Object[4];
         for(int i = 0 ; i < list.size() ; i++){
             rowData[0] = list.get(i).getName();

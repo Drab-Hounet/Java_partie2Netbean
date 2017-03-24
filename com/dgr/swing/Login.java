@@ -1,8 +1,10 @@
 
 package com.dgr.swing;
 
+import com.dgr.attributes.ResSocConnexion;
+import com.dgr.dao.*;
+import com.dgr.members.Person;
 import com.dgr.menu.*;
-import static javax.swing.JOptionPane.showMessageDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
@@ -120,10 +122,11 @@ public class Login extends javax.swing.JFrame {
 
     private void buttonValidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonValidateActionPerformed
         // TODO add your handling code here:
-        System.out.println(inputName.getText());
-        System.out.println(inputFirst_name.getText());
-        MenuConnexion connexion = new MenuConnexion(fenConnexion.listEmployees,fenConnexion.listCustomers);
-        if(connexion.verifyIfExist(inputName.getText(), inputFirst_name.getText())){
+        
+        DAO<Person> personDAO = new PersonDAO(ResSocConnexion.getInstance());
+        Person personToLogin = personDAO.find(inputName.getText(), inputFirst_name.getText());
+      
+        if(personToLogin != null ){
             showMessageDialog(this, inputFirst_name.getText() + "\nVous êtes connecté !");
             
         }else{

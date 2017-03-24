@@ -1,6 +1,9 @@
 
 package com.dgr.swing;
 
+import com.dgr.attributes.ResSocConnexion;
+import com.dgr.dao.DAO;
+import com.dgr.dao.PersonDAO;
 import com.dgr.members.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -34,6 +37,7 @@ public class Register extends javax.swing.JFrame {
     private void initComponents() {
 
         labelFirst_name1 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         labelTitle = new javax.swing.JLabel();
         buttonValidateRegister = new javax.swing.JButton();
         labelName = new javax.swing.JLabel();
@@ -104,6 +108,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(radioLevelMod1);
         radioLevelMod1.setText("niveau 1");
         radioLevelMod1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +116,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(radioLevelMod2);
         radioLevelMod2.setText("niveau 2");
 
         labelSalary.setText("Salaire");
@@ -208,48 +214,63 @@ public class Register extends javax.swing.JFrame {
 
     private void buttonValidateRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonValidateRegisterActionPerformed
         // TODO add your handling code here:
-        int birthYear;
-        int salary;
-        Person personToCreate;
+        DAO<Person> personDAO = new PersonDAO(ResSocConnexion.getInstance());
         
         if(listRole.getSelectedItem().equals("Utilisateur")){
             try{
-                birthYear = Integer.parseInt(inputBirthYear.getText());
-                personToCreate = new User(inputName.getText(), inputFirst_name.getText(), birthYear);
-                fenConnexion.listCustomers.getListUsers().add(personToCreate);
-                this.setVisible(false);
-                fenConnexion.setVisible(true);
-                fenConnexion.listingPerson.addRowToJTable(personToCreate);
+                //test if the creation is unique or else return false
+                if(personDAO.create(inputName.getText(),  inputFirst_name.getText(), Integer.parseInt(inputBirthYear.getText()) , "USER", 0 )){
+                    fenConnexion.listingPerson.addRowToJTable(personDAO.find(inputName.getText(), inputFirst_name.getText()));
+                    showMessageDialog(this, "inscription réussite");
+                }else{
+                    showMessageDialog(this, "erreur dans le matrice mec");
+                }
             }catch(Exception e){
                 showMessageDialog(this, "Attention année incorrecte !!");
             }
         
         }else if(listRole.getSelectedItem().equals("Modérateur")){
-            try{
-                birthYear = Integer.parseInt(inputBirthYear.getText());
-                personToCreate = new Moderator_level1(inputName.getText(), inputFirst_name.getText(), birthYear, 50);
-                fenConnexion.listCustomers.getListUsers().add(personToCreate);
-                this.setVisible(false);
-                fenConnexion.setVisible(true);
-                fenConnexion.listingPerson.addRowToJTable(personToCreate);
-            }catch(Exception e){
-                showMessageDialog(this, "Attention année incorrecte !!");
+            if (radioLevelMod1.isSelected()){ 
+                try{
+                    //test if the creation is unique or else return false
+                    if(personDAO.create(inputName.getText(),  inputFirst_name.getText(), Integer.parseInt(inputBirthYear.getText()) , "MODERATOR_LEVEL1", 50 )){
+                        fenConnexion.listingPerson.addRowToJTable(personDAO.find(inputName.getText(), inputFirst_name.getText()));
+                        showMessageDialog(this, "inscription réussite");
+                    }else{
+                        showMessageDialog(this, "Erreur le nom existe déjà !");
+                    }
+                }catch(Exception e){
+                    showMessageDialog(this, "Attention année incorrecte !!");
+                }
+            }else{
+                try{
+                    //test if the creation is unique or else return false
+                    if(personDAO.create(inputName.getText(),  inputFirst_name.getText(), Integer.parseInt(inputBirthYear.getText()) , "MODERATOR_LEVEL2", 100 )){
+                        fenConnexion.listingPerson.addRowToJTable(personDAO.find(inputName.getText(), inputFirst_name.getText()));
+                        showMessageDialog(this, "inscription réussite");
+                    }else{
+                        showMessageDialog(this, "Erreur le nom existe déjà !");
+                    }
+                }catch(Exception e){
+                    showMessageDialog(this, "Attention année incorrecte !!");
+                }
             }
-        
+
         }else if(listRole.getSelectedItem().equals("Directeur")){
             try{
-                birthYear = Integer.parseInt(inputBirthYear.getText());
-                salary = Integer.parseInt(inputSalary.getText());
-                personToCreate = new Director   (inputName.getText(), inputFirst_name.getText(), birthYear, salary);
-                fenConnexion.listEmployees.getListUsers().add(personToCreate);
-                this.setVisible(false);
-                fenConnexion.setVisible(true);
-                fenConnexion.listingPerson.addRowToJTable(personToCreate);
-
+                //test if the creation is unique or else return false
+                if(personDAO.create(inputName.getText(),  inputFirst_name.getText(), Integer.parseInt(inputBirthYear.getText()) , "DIRECTOR", Integer.parseInt(inputSalary.getText()))){
+                    fenConnexion.listingPerson.addRowToJTable(personDAO.find(inputName.getText(), inputFirst_name.getText()));
+                    showMessageDialog(this, "inscription réussite");
+                }else{
+                    showMessageDialog(this, "Erreur le nom existe déjà !");
+                }
             }catch(Exception e){
-                showMessageDialog(this, "Attention donnée incorrecte !!");  
+                showMessageDialog(this, "Attention saisie incorrecte !!");
             }
         }
+        this.setVisible(false);
+        fenConnexion.setVisible(true);
     }//GEN-LAST:event_buttonValidateRegisterActionPerformed
 
     private void inputFirst_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputFirst_nameActionPerformed
@@ -298,6 +319,7 @@ public class Register extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton buttonValidateRegister;
     private javax.swing.JTextField inputBirthYear;
     private javax.swing.JTextField inputFirst_name;
